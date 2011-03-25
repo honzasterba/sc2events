@@ -4,6 +4,8 @@ gem 'rails', '3.0.5'
 gem 'mysql2'
 gem 'capistrano'
 
+gem 'omniauth'
+
 gem 'ruby-debug'
 
 group :test do
