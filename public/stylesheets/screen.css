@@ -33,7 +33,7 @@
 		#header #logo
 		{
 			display: block;
-			background: url("../images/logo.png") no-repeat left bottom;
+			background: url("/images/logo.png") no-repeat left bottom;
 			width: 256px;
 			height: 80px;
 			position: absolute;
@@ -191,12 +191,12 @@
 		
 			.box.event .star.on
 			{
-				background: url("../images/star_on.png") no-repeat left top;
+				background: url("/images/star_on.png") no-repeat left top;
 			}
 			
 			.box.event .star.off
 			{
-				background: url("../images/star_off.png") no-repeat left top;
+				background: url("/images/star_off.png") no-repeat left top;
 			}
 		
 			.box.event .star span
@@ -213,7 +213,7 @@
 		
 		.box.event .slash
 		{
-			background: url("../images/slash_gray.png") no-repeat center center;
+			background: url("/images/slash_gray.png") no-repeat center center;
 		}
 		
 		.box.event .date
@@ -236,7 +236,7 @@
 		
 		.box.event.current .slash
 		{
-			background: url("../images/slash_white.png") no-repeat center center;
+			background: url("/images/slash_white.png") no-repeat center center;
 		}
 		
 		.box.event.hover
@@ -358,17 +358,17 @@
 		
 		.progress .passed
 		{
-			background-image: url('../images/dot_days_passed_orange.png');
+			background-image: url('/images/dot_days_passed_orange.png');
 		}
 		
 		.progress .current
 		{
-			background-image: url('../images/dot_days_current_orange.png');
+			background-image: url('/images/dot_days_current_orange.png');
 		}
 		
 		.progress .remaining
 		{
-			background-image: url('../images/dot_days_remaining_orange.png');
+			background-image: url('/images/dot_days_remaining_orange.png');
 		}
 
 	/* --------------------------------------------------------------------------
