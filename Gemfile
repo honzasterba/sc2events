@@ -23,4 +23,5 @@ end
 group :development do
   gem 'mongrel'
   gem 'nifty-generators'
+  gem 'annotate-models'
 end

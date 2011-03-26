@@ -7,6 +7,12 @@ Factory.define :admin, :parent => :user do |f|
   f.admin true
 end
 
+Factory.define :authorization do |f|
+  f.association :user, :factory => :user
+  f.sequence(:uid) { |i| i.to_s }
+  f.provider 'test-provider'
+end
+
 Factory.define :event do |f|
   f.sequence(:name) { |i| "Event test #{i}" }
   f.starts_at 2.days.from_now.to_date
