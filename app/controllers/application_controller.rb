@@ -6,6 +6,24 @@ class ApplicationController < ActionController::Base
 
   protected
 
+    def requires_authentication
+      if !current_user
+        flash[:error] = 'Log-in required'
+        redirect_to events_path
+        return false
+      end
+    end
+
+    def requires_admin_authentication
+      if !requires_authentication
+        flash[:error] = 'Admin Log-in required'
+      elsif !current_user.admin?
+        flash[:error] = 'Admin Log-in required'
+        redirect_to events_path
+        return false
+      end
+    end
+
     def current_user
       @current_user ||= User.find_by_id(session[:user_id])
     end

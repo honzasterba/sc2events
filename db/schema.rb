@@ -10,15 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110325225044) do
+ActiveRecord::Schema.define(:version => 20110326112515) do
 
-# Could not dump table "authorizations" because of following ArgumentError
-#   invalid date
-
-# Could not dump table "events" because of following ArgumentError
-#   invalid date
-
-# Could not dump table "users" because of following ArgumentError
-#   invalid date
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "admin"
+  end
 
 end

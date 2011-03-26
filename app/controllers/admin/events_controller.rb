@@ -2,6 +2,8 @@ class Admin::EventsController < ApplicationController
 
   layout 'admin'
 
+  before_filter :requires_admin_authentication
+
   def index
     @events = Event.all
   end

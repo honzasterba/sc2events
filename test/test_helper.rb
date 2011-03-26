@@ -3,11 +3,29 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def self.logged_in(&block)
+    logged_in_as(Factory(:user), &block)
+  end
+
+  def self.logged_in_as(user, &block)
+    context "logged in as #{user.name}" do
+      setup do
+        @user = user
+        session[:user_id] = @user.id
+      end
+      merge_block &block
+    end
+  end
+
+  def self.should_require_admin(actions = nil, &block)
+    actions ||= [:index]
+    actions.each do |a|
+      should "require admin for #{a}" do
+        get a
+        assert_response :redirect
+      end
+    end
+    logged_in_as(Factory(:admin), &block)
+  end
 end
