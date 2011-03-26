@@ -1,0 +1,308 @@
+	/* RESET */
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+	header, section, footer {display: block;}
+	
+	BODY
+	{
+		font-family: "Segoe UI", arial, sans-serif;
+		font-size: 13px;
+	}
+	
+	/* --------------------------------------------------------------------------
+		Layout
+	*/
+	
+	#page
+	{
+		width: 960px;
+		text-align: left;
+	}
+	
+	#header
+	{
+		height: 112px;
+		margin-bottom: 32px;
+	}
+	
+		#header #logo
+		{
+			display: block;
+			background: url("../images/logo.png") no-repeat left bottom;
+			height: 122px;
+			width: 288px;
+		}
+		
+			#header #logo span
+			{
+				display: none;
+			}
+	
+	#sidebar
+	{
+		width: 288px;
+		float: left;
+		margin-right: 16px;
+	}
+	
+	#content
+	{
+		width: 656px;
+		float: left;
+	}
+	
+	/* --------------------------------------------------------------------------
+		Utils
+	*/
+	
+	.slash
+	{
+		color: transparent;
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		overflow: hidden;
+	}
+	
+	/* --------------------------------------------------------------------------
+		Boxes
+	*/
+	
+	.box
+	{
+		display: block;
+		
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		padding: 8px;
+		
+		position: relative;
+	}
+	
+	.box.title,
+	.box.date
+	{
+		background: #333;
+		color: #fff;
+		font-size: 16px;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 8px;
+	}
+	
+	.box.title
+	{
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+		
+		-webkit-border-top-right-radius: 4px;
+		-webkit-border-bottom-right-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-moz-border-radius-bottomright: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		
+		padding-left: 80px;
+	}
+	
+	.box.event
+	{
+		background: #eee;
+		color: #333;
+		margin-bottom: 8px;
+		border: 2px solid #eee;
+		text-decoration: none;
+	}
+	
+		.box.event .star
+		{
+			display: block;
+			position: absolute;
+			left: -32px;
+			top: 0px;
+			display: block;
+			width: 32px;
+			height: 32px;
+			
+			cursor: pointer;
+		}
+		
+			.box.event .star.on
+			{
+				background: url("../images/star_on.png") no-repeat left top;
+			}
+			
+			.box.event .star.off
+			{
+				background: url("../images/star_off.png") no-repeat left top;
+			}
+		
+			.box.event .star span
+			{
+				display: none;
+			}
+	
+		.box.event .title
+		{
+			font-size: 16px;
+			color: #333;
+			font-weight: bold;
+		}
+		
+		.box.event .slash
+		{
+			background: url("../images/slash_gray.png") no-repeat center center;
+		}
+		
+		.box.event .date
+		{
+			font-size: 13px;
+			color: #999;
+			font-weight: bold;
+		}
+		
+		.box.event.current
+		{
+			background: #FBC900;
+			border: 2px solid #FBC900;
+		}
+		
+		.box.event.current .date
+		{
+			color: #fff;
+		}
+		
+		.box.event.current .slash
+		{
+			background: url("../images/slash_white.png") no-repeat center center;
+		}
+		
+		.box.event.hover
+		{
+			border: 2px solid #ddd;
+		}
+		
+		.box.event.current.hover
+		{
+			border: 2px solid #D99300;
+		}
+	
+	.box.contd
+	{
+		display: inline-block;
+		font-size: 13px;
+		font-weight: bold;
+		text-decoration: none;
+		margin-bottom: 8px;
+	}
+	
+		.box.contd.running
+		{
+			background: #FBC900;
+			color: #000;
+		}
+		
+		.box.contd.upcoming
+		{
+			background: #5DC0EB;
+			color: #fff;
+		}
+	
+		
+	
+	/* --------------------------------------------------------------------------
+		Layout specializations
+	*/
+	.schedule
+	{
+		
+	}
+	
+		.schedule .month
+		{
+			margin-bottom: 32px;
+		}
+		
+		.schedule .box.contd,
+		.schedule .box.event
+		{
+			margin-left: 64px;
+			padding: 8px 16px;
+		}
+		
+		.schedule .event .row
+		{
+			overflow: auto;
+		}
+		
+		.schedule .event h3
+		{
+			width: 368px;
+			float: left;
+		}
+		
+		.schedule .event .date
+		{
+			float: right;
+		}
+
+	/* --------------------------------------------------------------------------
+		Progress
+	*/
+	
+	.progress
+	{
+		overflow: hidden;
+	}
+	
+		.progress .passed,
+		.progress .current,
+		.progress .remaining
+		{
+			background: repeat-x left top;
+			height: 8px;
+			display: inline-block;
+		}
+		
+		.progress .passed
+		{
+			background-image: url('../images/dot_days_passed_orange.png');
+		}
+		
+		.progress .current
+		{
+			background-image: url('../images/dot_days_current_orange.png');
+		}
+		
+		.progress .remaining
+		{
+			background-image: url('../images/dot_days_remaining_orange.png');
+		}
+
+	/* --------------------------------------------------------------------------
+		Sidebar
+	*/
+	
+	.block.starred
+	{
+		
+	}
+	
+		.block.starred .content
+		{
+			padding-left: 64px;
+		}
+		
+		.block.starred .event
+		{
+			padding: 8px 8px 8px 16px;
+		}
+		
+		.block.starred .message
+		{
+			font-size: 16px;
+			font-weight: bold;
+			color: #ccc;
+			padding: 8px 16px;
+		}
