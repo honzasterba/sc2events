@@ -23,7 +23,7 @@ class ActiveSupport::TestCase
     actions.each do |a|
       should "require admin for #{a}" do
         get a
-        assert_response :redirect
+        assert_redirected_to login_path
       end
     end
     logged_in_as(Factory(:admin), &block)
