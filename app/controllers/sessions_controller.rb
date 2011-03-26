@@ -3,6 +3,11 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def destroy
+    self.current_user = nil
+    redirect_to events_path
+  end
+
   def create
     auth = request.env['rack.auth']
     unless @auth = Authorization.find_from_hash(auth)
