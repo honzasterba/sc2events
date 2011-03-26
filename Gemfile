@@ -12,3 +12,7 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
 end
+
+group :development do
+  gem 'mongrel'
+end
