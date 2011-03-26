@@ -6,6 +6,7 @@
 	{
 		font-family: "Segoe UI", arial, sans-serif;
 		font-size: 13px;
+		background: url("../images/bg.png") repeat-x left top;
 	}
 	
 	/* --------------------------------------------------------------------------
@@ -18,35 +19,112 @@
 		text-align: left;
 	}
 	
+	/* --------------------------------------------------------------------------
+		Header
+	*/
+	
 	#header
 	{
 		height: 112px;
 		margin-bottom: 32px;
+		position: relative;
 	}
 	
 		#header #logo
 		{
 			display: block;
 			background: url("../images/logo.png") no-repeat left bottom;
-			height: 122px;
-			width: 288px;
+			width: 256px;
+			height: 80px;
+			position: absolute;
+			left: 0px;
+			top: 32px;
 		}
 		
 			#header #logo span
 			{
 				display: none;
 			}
+		
+		#header ul.menu
+		{
+			position: absolute;
+			right: 0px;
+			top: 64px;
+		}
+		
+			#header ul.menu li
+			{
+				display: inline-block;
+			}
+		
+			#header .menu a
+			{
+				-webkit-border-radius: 2px;
+				-moz-border-radius: 2px;
+				border-radius: 2px;
+				display: inline-block;
+				
+				background: #5DC0EB;
+				
+				height: 32px;
+				line-height: 32px;
+				
+				margin-left: 8px;
+				padding: 0px 16px;
+				
+				color: #fff;
+				font-weight: bold;
+				font-size: 15px;
+				text-decoration: none;
+			}
+		
+		#header #timezone
+		{
+			position: absolute;
+			top: 40px;
+			left: 368px;
+		}
+		
+			#header #timezone label
+			{
+				line-height: 24px;
+				font-weight: bold;
+				color: #999;
+			}
+			
+			#header #timezone .select
+			{
+				-webkit-border-radius: 4px;
+				-moz-border-radius: 4px;
+				border-radius: 4px;
+				
+				border: 2px solid #ccc;
+				height: 32px;
+				line-height: 32px;
+				padding: 0 64px 0 16px;
+				
+				font-size: 15px;
+				font-weight: bold;
+				color: #333;
+				
+				background: #fff url("../images/arrow_down_gray.png") no-repeat right center;
+			}
+	
+	/* --------------------------------------------------------------------------
+		Main
+	*/
 	
 	#sidebar
 	{
-		width: 288px;
+		width: 352px;
 		float: left;
 		margin-right: 16px;
 	}
 	
 	#content
 	{
-		width: 656px;
+		width: 592px;
 		float: left;
 	}
 	
@@ -74,13 +152,12 @@
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
 		border-radius: 4px;
-		padding: 8px;
+		padding: 8px 16px;
 		
 		position: relative;
 	}
 	
-	.box.title,
-	.box.date
+	.box.title
 	{
 		background: #333;
 		color: #fff;
@@ -88,22 +165,6 @@
 		font-weight: bold;
 		text-transform: uppercase;
 		margin-bottom: 8px;
-	}
-	
-	.box.title
-	{
-		-webkit-border-radius: 0px;
-		-moz-border-radius: 0px;
-		border-radius: 0px;
-		
-		-webkit-border-top-right-radius: 4px;
-		-webkit-border-bottom-right-radius: 4px;
-		-moz-border-radius-topright: 4px;
-		-moz-border-radius-bottomright: 4px;
-		border-top-right-radius: 4px;
-		border-bottom-right-radius: 4px;
-		
-		padding-left: 80px;
 	}
 	
 	.box.event
@@ -246,6 +307,36 @@
 		{
 			float: right;
 		}
+		
+		.schedule h2
+		{
+			padding: 8px 16px;
+			color: #666;
+			border-bottom: 2px solid #eee;
+			
+			font-size: 16px;
+			font-weight: bold;
+			text-transform: uppercase;
+			
+			margin-bottom: 8px;
+		}
+		
+	#sidebar .box.title
+	{
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+		
+		-webkit-border-top-right-radius: 4px;
+		-webkit-border-bottom-right-radius: 4px;
+		-moz-border-radius-topright: 4px;
+		-moz-border-radius-bottomright: 4px;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		
+		padding-left: 80px;
+	}
+
 
 	/* --------------------------------------------------------------------------
 		Progress

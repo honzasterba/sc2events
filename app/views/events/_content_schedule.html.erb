@@ -1,0 +1,25 @@
+<%
+	month_current = nil
+%>
+<div class="box title">Schedule</div>
+
+<% unless @events.blank? %>
+	<div class="schedule">
+	<% @events.each_with_index do |event, i| %>
+		
+		<% if month_current != event.starts_at.strftime("%Y%m").to_i %>
+			<% if i != 0 %></div><% end %>
+			<div class="month">
+			<h2><%= event.starts_at.strftime("%B %Y") %></h2>
+			<% month_current = event.starts_at.strftime("%Y%m").to_i %>
+		<% end %>
+		
+		<%= render( "event", { :event => event } ) %>
+		
+		<% if i == (@events.count-1) %>
+			</div>
+		<% end %>
+		
+	<% end %>
+	</div>
+<% end %>

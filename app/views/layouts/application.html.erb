@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sc2events</title>
-  <%= stylesheet_link_tag :all %>
-  <%= csrf_meta_tag %>
+	<title>StarCraft II Events</title>
+	<%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag 'jquery.js' %>
+	<%= javascript_include_tag 'util.js' %>
+	<%= javascript_include_tag 'events.js' %>
+	<%= csrf_meta_tag %>
+	<script>
+		var config = {
+			// ToDo: Setup root URL here
+			url: "/"
+		}
+	</script>
 </head>
 <body>
+	<div id="page">
+		<div id="header">
+			<a href="#" id="logo"><span>Starcraft 2 Events</span></a>
+			
+			<div id="timezone">
+				<label>Timezone:</label>
+				<div class="select">Central Europe</div>
+			</div>
+			
+			<ul class="menu">
+				<li><a href="#">Add event</a></li>
+				<% if signed_in? %>
+					<li><%= current_user.name %> <%= link_to "Sign out", logout_path %></li>
+				<% else %>
+					<li><%= link_to "Sign in", login_path %></li>
+				<% end %>
+			</ul>
+		</div>
+	
+		<div id="main" class="with-sidebar">
+			<%= yield %>
+		</div>
+	</div>
 
-<p>
-<% if signed_in? %>
-    <%= current_user.name %>
-    <%= link_to "Log out", logout_path %>
-<% else %>
-    <%= link_to "Log in", login_path %>
-<% end %>
-</p>
-<%= yield %>
+	
+	<script>
+		Events.initialize( '', 'star_id' );
+	</script>
 
 </body>
 </html>

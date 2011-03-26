@@ -1,0 +1,36 @@
+<%
+=begin
+	$class_state = null;
+	switch( $event->state )
+	{
+	case Event::STATE_PASSED:
+		$class_state = 'passed';
+		break;
+	case Event::STATE_RUNNING:
+		$class_state = 'current';
+		break;
+	case Event::STATE_UPCOMING:
+		$class_state = 'upcoming';
+		break;
+	case Event::STATE_INCOMPLETE:
+		$class_state= 'passed';
+		break;
+	}
+=end
+
+	objid = 'object objid-event-' + event.id.to_s;
+%>
+
+<a class="box event <%= $class_state; %> <?php echo objid; ?>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>">
+	<div class="row">
+		<h3 class="title"><%= event.name %></h3>
+		<p class="date">
+			<%= event.starts_at.strftime('%B %Y') %>
+			<span class="slash">/</span>
+			<%= event.ends_at.nil? ? 'n/a' : event.ends_at.strftime('%B %Y') %>
+		</p>
+		<p>
+			<span class="star off <%= objid %>"><span>Star</span></span>
+		</p>
+	</div>
+</a>
