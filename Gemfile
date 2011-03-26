@@ -21,4 +21,5 @@ end
 
 group :development do
   gem 'mongrel'
+  gem 'nifty-generators'
 end
