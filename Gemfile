@@ -1,12 +1,18 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
-gem 'mysql2'
 gem 'capistrano'
 
 gem 'omniauth'
 
 gem 'ruby-debug'
+
+if RUBY_PLATFORM.downcase.include?("w32") or RUBY_PLATFORM.downcase.include?("linux")
+  gem 'mysql'
+else
+  gem 'mysql2'
+end
+
 
 group :test do
   gem 'shoulda'
