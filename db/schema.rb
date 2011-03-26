@@ -12,6 +12,23 @@
 
 ActiveRecord::Schema.define(:version => 20110326112515) do
 
+  create_table "authorizations", :force => true do |t|
+    t.string   "provider",   :null => false
+    t.string   "uid",        :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name",       :null => false
+    t.date     "starts_at",  :null => false
+    t.date     "ends_at"
+    t.string   "homepage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
