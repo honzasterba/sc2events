@@ -10,9 +10,9 @@
 <p>
 <% if signed_in? %>
     <%= current_user.name %>
-    <%= button_to "Log out", sessions_path, :method => :delete %>
+    <%= link_to "Log out", logout_path %>
 <% else %>
-    <%= link_to "Log in", new_session_path %>
+    <%= link_to "Log in", login_path %>
 <% end %>
 </p>
 <%= yield %>
