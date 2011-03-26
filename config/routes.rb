@@ -4,10 +4,10 @@ Sc2events::Application.routes.draw do
   match '/login', :to => 'sessions#new'
   match '/logout', :to => 'sessions#destroy'
 
-  resources :sessions, :only => [ :create ]
-
   resources :events, :only => [ :index, :show ] do
-    post :star
+    member do
+      post :star
+    end
   end
 
   match "/" => redirect("/events")
