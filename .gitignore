@@ -1,6 +1,7 @@
 .idea
 .bundle
 config/database.yml
+Gemfile.lock
 db/*.sqlite3
 log/*.log
 tmp/
