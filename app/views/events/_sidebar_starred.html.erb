@@ -1,12 +1,14 @@
 <div class="block starred">
 	<h1 class="box title">Starred</h1>
-  <% if signed_in? %>
 	<div class="content" id="starred-list">
-		<% current_user.events.current.each do |event| %>
-			<%= render "event", { :event => event } %>
+		<% if signed_in? %>
+			<% current_user.events.current.each do |event| %>
+				<%= render "event", { :event => event } %>
+			<% end %>
+		<% else %>
+			<div class="message">
+				<%= link_to "Sign in", login_path %> to star events.
+			</div>
 		<% end %>
 	</div>
-  <% else %>
-    <%= link_to "Sign in", login_path %> to star events.
-  <% end %>
 </div>

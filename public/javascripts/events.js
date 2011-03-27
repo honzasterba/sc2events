@@ -65,10 +65,11 @@
 			}
 			
 			var url = this.url +"/" +id+ "/"+ ( is_starred ? 'star' : 'unstar' );
-			$.post( url, "authenticity_token="+window._token, function( data )
+			$.post( url, null, function( data )
 			{
 				$("#starred-list").html( data );
-				$("#starred-list .new").fadeIn();
-			});
+				$("#starred-list .added").fadeIn("slow");
+				$("#starred-list .removed").fadeOut();
+			}, "html");
 		}
 	}

@@ -1,4 +1,6 @@
 <%
+	starred = signed_in? and current_user.starred_event?(event)
+	
 	class_state = 'upcoming';
 	if event.in_progress?
 		class_state = 'in-progress';
@@ -12,9 +14,11 @@
       star_class = "added"
     elsif event == @unstarred_event
       star_class = "removed"
+	  starred = false
     else
       star_class = ""
     end
+	
 %>
 
 <a class="box event <%= class_state %> <%= objid %> <%= star_class %>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>" target="_blank">
@@ -25,7 +29,7 @@
 			<%= event.ends_at.nil? ? 'n/a' : event.ends_at.strftime('%e %B') %>
 		</p>
 		<h3 class="title"><%= event.name %></h3>
-		<p><span class="star <%= signed_in? && current_user.starred_event?(event) ? 'on' : 'off' %> <%= objid %>"><span>Star</span></span></p>
+		<p><span class="star <%= starred && current_user.starred_event?(event) ? 'on' : 'off' %> <%= objid %>"><span>Star</span></span></p>
 		
 		<%= render_progress( event.days_passed, event.days_total ) if event.in_progress? %>
 	</div>
