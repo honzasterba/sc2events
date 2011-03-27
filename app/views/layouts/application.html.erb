@@ -8,7 +8,8 @@
 	<%= javascript_include_tag 'util.js' %>
 	<%= javascript_include_tag 'events.js' %>
 	<%= csrf_meta_tag %>
-	<script>
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+	<script type="text/javascript">
 		var config = {
 			url: "<%= root_url %>",
 			signed_in: <%= signed_in? ? true : false %>,

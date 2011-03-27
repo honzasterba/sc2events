@@ -21,6 +21,8 @@ class Event < ActiveRecord::Base
 
   has_many :stars, :dependent => :destroy
 
+  scope :current, where("ends_at is NULL OR ends_at >= ?", Date.today).order('starts_at ASC')
+
   def upcoming?
     starts_at && (starts_at > Date.today)
   end
