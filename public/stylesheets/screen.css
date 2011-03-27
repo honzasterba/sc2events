@@ -508,6 +508,11 @@
 			{
 				background-image: url("../images/ic_google.png");
 			}
+			
+			ul.sign-in .ic-openid
+			{
+				background-image: url("../images/ic_openid.png");
+			}
 
 	/* --------------------------------------------------------------------------
 		Title
