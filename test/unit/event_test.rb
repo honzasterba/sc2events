@@ -28,16 +28,28 @@ class EventTest < ActiveSupport::TestCase
       assert @event.incomplete?
     end
 
+    should "have 1 day total" do
+      assert_equal 1, @event.days_total
+    end
+
+    should "have no days passed" do
+      assert_equal 0, @event.days_passed
+    end
+
     context "in progress" do
 
       setup do
-        @event.update_attributes! :starts_at => 2.day.ago.to_date
+        @event.update_attributes! :starts_at => (2.days.ago - 1.hour)
       end
 
       should "be in progress" do
         assert !@event.upcoming?
         assert @event.in_progress?
         assert !@event.finished?
+      end
+
+      should "have 3 days passed" do
+        assert_equal 3, @event.days_passed
       end
 
     end
@@ -57,6 +69,14 @@ class EventTest < ActiveSupport::TestCase
 
       should "not be incomplete" do
         assert !@event.incomplete?
+      end
+
+      should "have 2 days passed" do
+        assert_equal 2, @event.days_passed
+      end
+
+      should "have 2 days total" do
+        assert_equal 2, @event.days_total
       end
 
     end

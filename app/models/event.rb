@@ -40,11 +40,24 @@ class Event < ActiveRecord::Base
   end
   
   def days_passed
-    return (Date.today - starts_at).to_i
+    if upcoming?
+      return 0
+    elsif finished?
+      return days_total
+    elsif ends_at
+      last = Date.today > ends_at.to_date ? ends_at.to_date : Date.today
+    else
+      last = Date.today
+    end
+    return (last - starts_at.to_date).to_i
   end
   
   def days_total
-    return (ends_at - starts_at).to_i + 1
+    if ends_at
+      return (ends_at.to_date - starts_at.to_date).to_i + 1
+    else
+      return 1
+    end
   end
 
   private
