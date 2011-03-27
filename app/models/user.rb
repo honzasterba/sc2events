@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :events, :through => :stars
 
   def starred_event?(event)
-    stars.where(:event_id => event.id).any?
+    stars.where(:event_id => event.id).first
   end
 
   def self.create_from_hash!(hash)

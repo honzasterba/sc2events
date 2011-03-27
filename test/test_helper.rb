@@ -18,6 +18,17 @@ class ActiveSupport::TestCase
     end
   end
 
+  def self.should_require_login(actions = nil, &block)
+    actions ||= { :index => :get }
+    actions.each do |a, m|
+      should "require login for #{a}" do
+        send(m, a)
+        assert_redirected_to login_path
+      end
+    end
+    logged_in(&block)
+  end
+
   def self.should_require_admin(actions = nil, &block)
     actions ||= [:index]
     actions.each do |a|

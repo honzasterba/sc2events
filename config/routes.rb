@@ -7,6 +7,7 @@ Sc2events::Application.routes.draw do
   resources :events, :only => [ :index, :show ] do
     member do
       post :star
+      post :unstar
     end
   end
   match "/" => redirect("/events")
