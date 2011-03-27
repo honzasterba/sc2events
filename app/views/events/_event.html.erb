@@ -7,9 +7,17 @@
 	end
 
 	objid = 'object objid-event-' + event.id.to_s;
+
+    if event == @starred_event
+      star_class = "added"
+    elsif event == @unstarred_event
+      star_class = "removed"
+    else
+      star_class = ""
+    end
 %>
 
-<a class="box event <%= class_state %> <%= objid %>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>" target="_blank">
+<a class="box event <%= class_state %> <%= objid %> <%= star_class %>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>" target="_blank">
 	<div class="row">
 		<p class="date">
 			<%= event.starts_at.strftime('%e %B') %>

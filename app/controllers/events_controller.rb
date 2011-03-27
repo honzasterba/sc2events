@@ -11,19 +11,21 @@ class EventsController < ApplicationController
     if !current_user.starred_event?(@event)
       current_user.stars.create(:event => @event)
     end
+    @starred_event = @event
     respond_to do |format|
-      format.js { render :partial => "event", :locals => { :event => @event } }
+      format.js { render :partial => "sidebar_update" }
       format.html { redirect_to events_path }
     end
   end
 
   def unstar
+    @unstarred_event = @event
+    respond_to do |format|
+      format.js { render :partial => "sidebar_update" }
+      format.html { redirect_to events_path }
+    end
     if star = current_user.starred_event?(@event)
       star.destroy
-    end
-    respond_to do |format|
-      format.js { render :partial => "event", :locals => { :event => @event } }
-      format.html { redirect_to events_path }
     end
   end
 
