@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_filter :find_event, :only => [ :star, :unstar ]
 
   def index
-    @events = Event.all
+    @events = Event.current
   end
 
   def star

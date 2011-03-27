@@ -58,8 +58,23 @@ class EventTest < ActiveSupport::TestCase
       should "not be incomplete" do
         assert !@event.incomplete?
       end
+
     end
 
+  end
+
+  context "multiple events exists" do
+
+    setup do
+      @past = Factory :event, :starts_at => 5.days.ago, :ends_at => 3.days.ago
+      @now = Factory :event, :starts_at => 2.day.ago, :ends_at => 2.days.from_now
+      @never_ending = Factory :event, :starts_at => 1.day.ago
+      @future = Factory :event, :starts_at => 2.days.from_now
+    end
+
+    should "find current events" do
+      assert_equal [@now, @never_ending, @future], Event.current
+    end
   end
 
 end
