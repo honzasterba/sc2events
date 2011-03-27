@@ -24,7 +24,7 @@
 			
 			<%= form_tag "", :id => "timezone" do %>
 				<label>Timezone:</label>
-				<%= time_zone_select( "_settings", "time_zone", nil, :include_blank => true) %>
+				<%= time_zone_select( "_settings", "time_zone", nil, { :include_blank => true }, { :onchange => "this.form.submit(); return false;" }) %>
 			<% end %>
 			
 			<ul class="menu">
