@@ -1,9 +1,14 @@
 	
 	var Events = {
 		
-		initialize: function()
+		url: null,
+		
+		initialize: function( options )
 		{
+			this.url = options.url;
+			
 			var this_events = this;
+			
 			
 			$(document).delegate( 'span.star', 'click', function( e )
 			{
@@ -53,9 +58,14 @@
 		
 		onStarred: function( id, is_starred )
 		{
-			console.log( window.config );
-			var url = window.config.url +"/events/star/"+ ( is_starred ? 'on' : 'off' ) +'/'+id;
-			$.get( url, null, function( data )
+			if( window.config.signed_in == false )
+			{
+				window.location = window.config.url+'/login'
+				return false;
+			}
+			
+			var url = this.url +"/" +id+ "/"+ ( is_starred ? 'star' : 'unstar' );
+			$.post( url, null, function( data )
 			{
 				$("#starred-list").html( data );
 				$("#starred-list .new").fadeIn();

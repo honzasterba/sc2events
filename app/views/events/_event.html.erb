@@ -17,9 +17,7 @@
 			<%= event.ends_at.nil? ? 'n/a' : event.ends_at.strftime('%e %B') %>
 		</p>
 		<h3 class="title"><%= event.name %></h3>
-		<p>
-			<span class="star off <%= objid %>"><span>Star</span></span>
-		</p>
+		<p><span class="star <%= signed_in? && current_user.starred_event?(event) ? 'on' : 'off' %> <%= objid %>"><span>Star</span></span></p>
 		
 		<%= render_progress( event.days_passed, event.days_total ) if event.in_progress? %>
 	</div>

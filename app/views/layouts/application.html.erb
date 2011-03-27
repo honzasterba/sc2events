@@ -9,8 +9,8 @@
 	<%= csrf_meta_tag %>
 	<script>
 		var config = {
-			// ToDo: Setup root URL here
-			url: "http://localhost:3000"
+			url: "<%= root_url %>",
+			signed_in: <%= signed_in? ? true : false %>
 		}
 	</script>
 </head>
@@ -21,11 +21,10 @@
 			
 			<div id="timezone">
 				<label>Timezone:</label>
-				<div class="select">Central Europe</div>
+				<%= time_zone_select( "user", "time_zone", nil, :include_blank => true) %>
 			</div>
 			
 			<ul class="menu">
-				<li><a href="#">Add event</a></li>
 				<% if signed_in? %>
 					<li class="sign-out"><span class="username"><%= current_user.name %></span><%= link_to "Sign out", logout_path %></li>
 				<% else %>
@@ -41,7 +40,7 @@
 
 	
 	<script>
-		Events.initialize();
+		Events.initialize({ url: "<%= events_path %>" });
 	</script>
 
 </body>
