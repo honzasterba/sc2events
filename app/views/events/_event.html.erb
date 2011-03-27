@@ -21,7 +21,7 @@
 	objid = 'object objid-event-' + event.id.to_s;
 %>
 
-<a class="box event <%= $class_state; %> <?php echo objid; ?>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>">
+<a class="box event <%= $class_state; %> <%= objid %>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>">
 	<div class="row">
 		<h3 class="title"><%= event.name %></h3>
 		<p class="date">
