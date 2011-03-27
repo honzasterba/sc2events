@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html {
         if request.xhr?
-          render :partial => "sidebar_update"
+          render :partial => "sidebar_starred_list"
         else
           redirect_to events_path
         end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html {
         if request.xhr?
-          render :partial => "sidebar_update"
+          render :partial => "sidebar_starred_list"
         else
           redirect_to events_path
         end

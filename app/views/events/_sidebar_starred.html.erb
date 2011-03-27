@@ -1,14 +1,6 @@
 <div class="block starred">
 	<h1 class="box title">Starred</h1>
 	<div class="content" id="starred-list">
-		<% if signed_in? %>
-			<% current_user.events.current.each do |event| %>
-				<%= render "event", { :event => event } %>
-			<% end %>
-		<% else %>
-			<div class="message">
-				<%= link_to "Sign in", login_path %> to star events.
-			</div>
-		<% end %>
+		<%= render "sidebar_starred_list" %>
 	</div>
 </div>

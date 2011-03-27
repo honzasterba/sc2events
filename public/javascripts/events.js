@@ -68,8 +68,10 @@
 			$.post( url, null, function( data )
 			{
 				$("#starred-list").html( data );
-				$("#starred-list .added").fadeIn("slow");
-				$("#starred-list .removed").fadeOut();
+				if( is_starred )
+					$("#starred-list .added").animate({opacity: 1});
+				else
+					$("#starred-list .removed").fadeOut();
 			}, "html");
 		}
 	}

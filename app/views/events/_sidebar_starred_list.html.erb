@@ -1,0 +1,15 @@
+<% if signed_in? %>
+    <% if current_user.events.current.empty? or (!@unstarred_event.nil? and current_user.events.current.size == 1) %>
+        <div class="message">
+            <strong>No starred events.</strong>
+        </div>
+    <% else %>
+        <% current_user.events.current.each do |event| %>
+            <%= render "event", { :event => event } %>
+        <% end %>
+    <% end %>
+<% else %>
+    <div class="message">
+        <%= link_to "Sign in", login_path %> to star events.
+    </div>
+<% end %>
