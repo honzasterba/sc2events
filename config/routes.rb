@@ -10,7 +10,7 @@ Sc2events::Application.routes.draw do
       post :unstar
     end
   end
-  match "/" => redirect("/events")
+  match "/" => redirect("/events"), :as => 'root'
 
   namespace :admin do
     resources :events
