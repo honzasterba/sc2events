@@ -17,3 +17,8 @@ Factory.define :event do |f|
   f.sequence(:name) { |i| "Event test #{i}" }
   f.starts_at 2.days.from_now.to_date
 end
+
+Factory.define :star do |f|
+  f.association :user, :factory => :user
+  f.association :event, :factory => :event
+end

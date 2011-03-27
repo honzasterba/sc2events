@@ -14,6 +14,13 @@ class User < ActiveRecord::Base
 
   has_many :authorizations
 
+  has_many :stars, :dependent => :destroy
+  has_many :events, :through => :stars
+
+  def starred_event?(event)
+    stars.where(:event_id => event.id).any?
+  end
+
   def self.create_from_hash!(hash)
     create(:name => hash['user_info']['name'])
   end

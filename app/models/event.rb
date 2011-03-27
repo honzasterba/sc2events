@@ -1,15 +1,16 @@
 # == Schema Information
-# Schema version: 20110326112515
+# Schema version: 20110327100359
 #
 # Table name: events
 #
-#  id         :integer(4)      not null, primary key
-#  name       :string(255)     not null
-#  starts_at  :date            not null
-#  ends_at    :date
-#  homepage   :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer(4)      not null, primary key
+#  name        :string(255)     not null
+#  starts_at   :date            not null
+#  ends_at     :date
+#  homepage    :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  stars_count :integer(4)      default(0)
 #
 
 class Event < ActiveRecord::Base
@@ -17,6 +18,8 @@ class Event < ActiveRecord::Base
   validates :name, :presence => true, :length => { :minimum => 3 }
   validates :starts_at, :presence => true
   validate :validate_finished_at
+
+  has_many :stars, :dependent => :destroy
 
   def upcoming?
     starts_at && (starts_at > Date.today)
