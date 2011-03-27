@@ -50,7 +50,7 @@ class EventsControllerTest < ActionController::TestCase
       should "get starred XHR" do
         xhr :post, :star, :id => @event
         assert @user.starred_event?(@event)
-        assert_template "_event"
+        assert_template "_sidebar_starred_list"
       end
 
       context "starred" do
@@ -69,7 +69,7 @@ class EventsControllerTest < ActionController::TestCase
         should "get unstarred XHR" do
           xhr :post, :unstar, :id => @event
           assert !@user.starred_event?(@event)
-          assert_template "_event"
+          assert_template "_sidebar_starred_list"
         end
 
       end

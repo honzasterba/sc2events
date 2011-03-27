@@ -78,8 +78,7 @@ GEM
       gem_plugin (>= 0.2.3)
     multi_json (0.0.5)
     multipart-post (1.1.0)
-    mysql (2.8.1)
-    mysql (2.8.1-x86-mingw32)
+    mysql2 (0.2.6)
     net-ldap (0.1.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -180,7 +179,7 @@ DEPENDENCIES
   factory_girl_rails
   mocha
   mongrel
-  mysql
+  mysql2
   nifty-generators
   oa-openid
   omniauth
