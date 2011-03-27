@@ -1,5 +1,5 @@
 set :application, "sc2events.com"
-set :deploy_to, "/srv/www/sc2events/app"
+set :deploy_to, "/srv/www/sc2events"
 set :user, "sc2events"
 set :use_sudo, false
 
@@ -31,23 +31,26 @@ after :deploy, 'config:create_symlinks'
 namespace :bundler do
   task :create_symlink, :roles => :app do
     shared_dir = File.join(shared_path, 'bundle')
-    release_dir = File.join(release_path, '.bundle')
+    release_dir = File.join(release_path, 'vendor/bundle')
     run "mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}"
   end
 
   task :install, :roles => :app do
-    run "cd #{release_path} && bundle install"
+    run "cd #{release_path} && bundle install --deployment"
 
     on_rollback do
       if previous_release
-        run "cd #{previous_release} && bundle install"
+        run "cd #{previous_release} && bundle install --deployment"
       else
         logger.important "no previous release to rollback to, rollback of bundler:install skipped"
       end
     end
   end
 
-  task :bundle_new_release => [:create_symlink, :install], :roles => :db
+  task :bundle_new_release, :roles => :app do
+    bundler.create_symlink
+    bundler.install
+  end
 
 end
 
