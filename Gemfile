@@ -4,6 +4,7 @@ gem 'rails', '3.0.5'
 gem 'capistrano'
 
 gem 'omniauth'
+gem 'oa-openid'
 
 gem 'ruby-debug'
 
