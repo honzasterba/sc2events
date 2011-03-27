@@ -2,7 +2,28 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  layout 'application'  
+
   protected
+
+    def requires_authentication
+      if !current_user
+        flash[:error] = 'Log-in required'
+        redirect_to login_path
+        return false
+      else
+        return true
+      end
+    end
+
+    def requires_admin_authentication
+      return false unless requires_authentication
+      if !current_user.admin?
+        flash[:error] = 'Admin Log-in required'
+        redirect_to login_path
+        return false
+      end
+    end
 
     def current_user
       @current_user ||= User.find_by_id(session[:user_id])

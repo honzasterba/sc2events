@@ -17,8 +17,11 @@ end
 group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'mocha'
 end
 
 group :development do
   gem 'mongrel'
+  gem 'nifty-generators'
+  gem 'annotate-models'
 end
