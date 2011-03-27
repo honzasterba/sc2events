@@ -7,7 +7,7 @@ gem 'omniauth'
 
 gem 'ruby-debug'
 
-if RUBY_PLATFORM.downcase.include?("w32") or RUBY_PLATFORM.downcase.include?("linux")
+if RUBY_PLATFORM.downcase.include?("w32")
   gem 'mysql'
 else
   gem 'mysql2'
