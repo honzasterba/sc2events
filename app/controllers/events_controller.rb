@@ -13,16 +13,26 @@ class EventsController < ApplicationController
     end
     @starred_event = @event
     respond_to do |format|
-      format.js { render :partial => "sidebar_update" }
-      format.html { redirect_to events_path }
+      format.html {
+        if request.xhr?
+          render :partial => "sidebar_update"
+        else
+          redirect_to events_path
+        end
+      }
     end
   end
 
   def unstar
     @unstarred_event = @event
     respond_to do |format|
-      format.js { render :partial => "sidebar_update" }
-      format.html { redirect_to events_path }
+      format.html {
+        if request.xhr?
+          render :partial => "sidebar_update"
+        else
+          redirect_to events_path
+        end
+      }
     end
     if star = current_user.starred_event?(@event)
       star.destroy
