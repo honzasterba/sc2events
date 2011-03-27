@@ -27,7 +27,7 @@
 			<ul class="menu">
 				<li><a href="#">Add event</a></li>
 				<% if signed_in? %>
-					<li><%= current_user.name %> <%= link_to "Sign out", logout_path %></li>
+					<li class="sign-out"><span class="username"><%= current_user.name %></span><%= link_to "Sign out", logout_path %></li>
 				<% else %>
 					<li><%= link_to "Sign in", login_path %></li>
 				<% end %>

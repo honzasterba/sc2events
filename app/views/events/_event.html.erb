@@ -1,36 +1,26 @@
 <%
-=begin
-	$class_state = null;
-	switch( $event->state )
-	{
-	case Event::STATE_PASSED:
-		$class_state = 'passed';
-		break;
-	case Event::STATE_RUNNING:
-		$class_state = 'current';
-		break;
-	case Event::STATE_UPCOMING:
-		$class_state = 'upcoming';
-		break;
-	case Event::STATE_INCOMPLETE:
-		$class_state= 'passed';
-		break;
-	}
-=end
+	class_state = 'upcoming';
+	if event.in_progress?
+		class_state = 'in-progress';
+	elsif event.finished?
+		class_state = 'finished';
+	end
 
 	objid = 'object objid-event-' + event.id.to_s;
 %>
 
-<a class="box event <%= $class_state; %> <%= objid %>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>">
+<a class="box event <%= class_state %> <%= objid %>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>" target="_blank">
 	<div class="row">
-		<h3 class="title"><%= event.name %></h3>
 		<p class="date">
-			<%= event.starts_at.strftime('%B %Y') %>
+			<%= event.starts_at.strftime('%e %B') %>
 			<span class="slash">/</span>
-			<%= event.ends_at.nil? ? 'n/a' : event.ends_at.strftime('%B %Y') %>
+			<%= event.ends_at.nil? ? 'n/a' : event.ends_at.strftime('%e %B') %>
 		</p>
+		<h3 class="title"><%= event.name %></h3>
 		<p>
 			<span class="star off <%= objid %>"><span>Star</span></span>
 		</p>
+		
+		<%= render_progress( event.days_passed, event.days_total ) if event.in_progress? %>
 	</div>
 </a>

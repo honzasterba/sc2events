@@ -7,16 +7,16 @@
 	<div class="schedule">
 	<% @events.each_with_index do |event, i| %>
 		
-		<% if month_current != event.starts_at.strftime("%Y%m").to_i %>
+		<% if month_current.nil? or month_current != make_month_stamp(event.starts_at) %>
 			<% if i != 0 %></div><% end %>
 			<div class="month">
 			<h2><%= event.starts_at.strftime("%B %Y") %></h2>
-			<% month_current = event.starts_at.strftime("%Y%m").to_i %>
+			<% month_current = make_month_stamp(event.starts_at) %>
 		<% end %>
 		
 		<%= render( "event", { :event => event } ) %>
 		
-		<% if i == (@events.count-1) %>
+		<% if event === @events.last %>
 			</div>
 		<% end %>
 		

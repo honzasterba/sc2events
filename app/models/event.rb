@@ -33,6 +33,14 @@ class Event < ActiveRecord::Base
   def incomplete?
     ends_at.blank?
   end
+  
+  def days_passed
+    return (Date.today - starts_at).to_i
+  end
+  
+  def days_total
+    return (ends_at - starts_at).to_i + 1
+  end
 
   private
 

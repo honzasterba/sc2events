@@ -78,6 +78,53 @@
 				font-size: 15px;
 				text-decoration: none;
 			}
+			
+				#header .menu a:hover
+				{
+					background: #333;
+				}
+			
+			#header .menu .sign-out a
+			{
+				-webkit-border-radius: 0px;
+				-moz-border-radius: 0px;
+				border-radius: 0px;
+				
+				-webkit-border-top-right-radius: 2px;
+				-webkit-border-bottom-right-radius: 2px;
+				-moz-border-radius-topright: 2px;
+				-moz-border-radius-bottomright: 2px;
+				border-top-right-radius: 2px;
+				border-bottom-right-radius: 2px;
+				
+				margin-left: 0px;
+			}
+			
+			#header .menu .sign-out .username
+			{
+				display: inline-block;
+				height: 32px;
+				line-height: 32px;
+				margin-left: 8px;
+				padding: 0px 16px;
+				
+				-webkit-border-radius: 0px;
+				-moz-border-radius: 0px;
+				border-radius: 0px;
+				
+				-webkit-border-top-left-radius: 2px;
+				-webkit-border-bottom-left-radius: 2px;
+				-moz-border-radius-topleft: 2px;
+				-moz-border-radius-bottomleft: 2px;
+				border-top-left-radius: 2px;
+				border-bottom-left-radius: 2px;
+				
+				background: #eee;
+				
+				font-weight: bold;
+				font-size: 16px;
+				
+			}
 		
 		#header #timezone
 		{
@@ -163,7 +210,6 @@
 		color: #fff;
 		font-size: 16px;
 		font-weight: bold;
-		text-transform: uppercase;
 		margin-bottom: 8px;
 	}
 	
@@ -180,8 +226,8 @@
 		{
 			display: block;
 			position: absolute;
-			left: -32px;
-			top: 0px;
+			left: -40px;
+			top: 4px;
 			display: block;
 			width: 32px;
 			height: 32px;
@@ -209,6 +255,7 @@
 			font-size: 16px;
 			color: #333;
 			font-weight: bold;
+			line-height: 24px;
 		}
 		
 		.box.event .slash
@@ -221,20 +268,21 @@
 			font-size: 13px;
 			color: #999;
 			font-weight: bold;
+			line-height: 24px;
 		}
 		
-		.box.event.current
+		.box.event.in-progress
 		{
 			background: #FBC900;
 			border: 2px solid #FBC900;
 		}
 		
-		.box.event.current .date
+		.box.event.in-progress .date
 		{
 			color: #fff;
 		}
 		
-		.box.event.current .slash
+		.box.event.in-progress .slash
 		{
 			background: url("/images/slash_white.png") no-repeat center center;
 		}
@@ -244,7 +292,7 @@
 			border: 2px solid #ddd;
 		}
 		
-		.box.event.current.hover
+		.box.event.in-progress.hover
 		{
 			border: 2px solid #D99300;
 		}
@@ -258,7 +306,7 @@
 		margin-bottom: 8px;
 	}
 	
-		.box.contd.running
+		.box.contd.in-progress
 		{
 			background: #FBC900;
 			color: #000;
@@ -297,12 +345,6 @@
 			overflow: auto;
 		}
 		
-		.schedule .event h3
-		{
-			width: 368px;
-			float: left;
-		}
-		
 		.schedule .event .date
 		{
 			float: right;
@@ -334,7 +376,7 @@
 		border-top-right-radius: 4px;
 		border-bottom-right-radius: 4px;
 		
-		padding-left: 80px;
+		padding-left: 64px;
 	}
 
 
@@ -347,26 +389,27 @@
 		overflow: hidden;
 	}
 	
-		.progress .passed,
-		.progress .current,
-		.progress .remaining
+		.progress .p,
+		.progress .c,
+		.progress .r
 		{
+			width: 16px;
 			background: repeat-x left top;
 			height: 8px;
 			display: inline-block;
 		}
 		
-		.progress .passed
+		.progress .p
 		{
 			background-image: url('/images/dot_days_passed_orange.png');
 		}
 		
-		.progress .current
+		.progress .c
 		{
 			background-image: url('/images/dot_days_current_orange.png');
 		}
 		
-		.progress .remaining
+		.progress .r
 		{
 			background-image: url('/images/dot_days_remaining_orange.png');
 		}
@@ -375,25 +418,101 @@
 		Sidebar
 	*/
 	
-	.block.starred
+	#sidebar .block
 	{
 		
 	}
 	
-		.block.starred .content
+		#sidebar .block .content
 		{
 			padding-left: 64px;
 		}
 		
-		.block.starred .event
+	#sidebar .event
+	{
+		padding: 8px 8px 8px 16px;
+	}
+	
+		#sidebar .progress .p, 
+		#sidebar .progress .c, 
+		#sidebar .progress .r
 		{
-			padding: 8px 8px 8px 16px;
+			width: 10px;
+		} 
+		
+	#sidebar .message
+	{
+		font-size: 16px;
+		color: #666;
+		padding: 8px 16px;
+		line-height: 24px;
+	}
+
+	/* --------------------------------------------------------------------------
+		Sign in
+	*/
+	
+	ul.sign-in
+	{
+		width: 464px;
+	}
+	
+		ul.sign-in li
+		{
+			margin-bottom: 8px;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+			
+			background: #5DC0EB url("../images/arrow_right_white.png") no-repeat right center;
 		}
 		
-		.block.starred .message
+			ul.sign-in li:hover
+			{
+				background-color: #333;
+			}
+		
+		ul.sign-in a
 		{
-			font-size: 16px;
-			font-weight: bold;
-			color: #ccc;
-			padding: 8px 16px;
+			display: block;
+			
+			background: no-repeat 8px 8px;
+			
+			padding: 0px 8px 0px 80px;
+			
+			height: 64px;
+			line-height: 64px;
+			
+			text-decoration: none;
+			color: #fff;
+			font-size: 20px;
 		}
+		
+			ul.sign-in .ic-twitter
+			{
+				background-image: url("../images/ic_twitter.png");
+			}
+			
+			ul.sign-in .ic-facebook
+			{
+				background-image: url("../images/ic_facebook.png");
+			}
+			
+			ul.sign-in .ic-google
+			{
+				background-image: url("../images/ic_google.png");
+			}
+
+	/* --------------------------------------------------------------------------
+		Title
+	*/
+	
+	#title
+	{
+		margin-bottom: 56px;
+	}
+	
+	#title .box.title
+	{
+		padding-left: 64px;
+	}
