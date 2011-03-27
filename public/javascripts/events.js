@@ -65,7 +65,7 @@
 			}
 			
 			var url = this.url +"/" +id+ "/"+ ( is_starred ? 'star' : 'unstar' );
-			$.post( url, { authenticity_token: window.config.authenticity_token }, function( data )
+			$.post( url, function( data )
 			{
 				$("#starred-list").html( data );
 				$("#starred-list .new").fadeIn();
