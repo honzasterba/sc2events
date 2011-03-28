@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  layout 'application'  
+  layout 'application'
+
+  before_filter :set_time_zone
 
   protected
 
@@ -39,5 +41,20 @@ class ApplicationController < ActionController::Base
       @current_user = user
       session[:user_id] = user ? user.id : nil
     end
+
+    def set_time_zone
+      if params[:time_zone]
+        Time.zone = params[:time_zone]
+      elsif session && session[:time_zone]
+        Time.zone = session[:time_zone]
+      end
+      session[:time_zone] = Time.zone
+    end
+
+    def current_time_zone
+      Time.zone
+    end
+
+    helper_method :current_time_zone
 
 end

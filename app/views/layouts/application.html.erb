@@ -22,9 +22,9 @@
 		<div id="header">
             <%= link_to "<span>Starcraft 2 Events</span>".html_safe, root_url, :id => 'logo' %>
 			
-			<%= form_tag "", :id => "timezone" do %>
+			<%= form_tag "", :id => "timezone", :method => "get" do %>
 				<label>Timezone:</label>
-				<%= time_zone_select( "_settings", "time_zone", nil, { :include_blank => true }, { :onchange => "this.form.submit(); return false;" }) %>
+				<%= app_time_zone_select(:onchange => "this.form.submit(); return false;") %>
 			<% end %>
 			
 			<ul class="menu">
