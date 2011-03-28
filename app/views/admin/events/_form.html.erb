@@ -4,6 +4,10 @@
 <%= f.text_field :name %>
 </p>
 <p>
+<%= f.label :time_zone %><br />
+<%= f.time_zone_select :time_zone  %>
+</p>
+<p>
 <%= f.label :starts_at %><br />
 <%= f.datetime_select :starts_at %>
 </p>

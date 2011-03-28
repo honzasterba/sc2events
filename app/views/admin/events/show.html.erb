@@ -5,12 +5,24 @@
   <%= @event.name %>
 </p>
 <p>
-  <strong>Starts At:</strong>
+  <strong>Starts At (local):</strong>
   <%= @event.starts_at %>
 </p>
 <p>
-  <strong>Ends At:</strong>
+  <strong>Ends At (local):</strong>
   <%= @event.ends_at %>
+</p>
+<p>
+  <strong>Time zone:</strong>
+  <%= @event.zone %>
+</p>
+<p>
+  <strong>Starts At (zoned):</strong>
+  <%= @event.starts_in_zone %>
+</p>
+<p>
+  <strong>Ends At (zoned):</strong>
+  <%= @event.ends_in_zone %>
 </p>
 <p>
   <strong>Homepage:</strong>

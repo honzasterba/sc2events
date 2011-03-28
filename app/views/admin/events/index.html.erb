@@ -1,16 +1,18 @@
 <% title "Events" %>
 
-<table>
+<table border="1" padding="2">
   <tr>
     <th>Name</th>
     <th>Starts At</th>
     <th>Ends At</th>
+    <th>TZ</th>
   </tr>
   <% for event in @events %>
     <tr>
       <td><%= event.name %></td>
-      <td><%= event.starts_at %></td>
-      <td><%= event.ends_at %></td>
+      <td><%= event.starts_in_zone %></td>
+      <td><%= event.ends_in_zone %></td>
+      <td><%= event.time_zone %></td>
       <td><%= link_to "Show", admin_event_path(event) %></td>
       <td><%= link_to "Edit", edit_admin_event_path(event) %></td>
       <td><%= link_to "Destroy", admin_event_path(event), :confirm => 'Are you sure?', :method => :delete %></td>

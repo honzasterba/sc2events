@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327222406) do
+ActiveRecord::Schema.define(:version => 20110328000448) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider",   :null => false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20110327222406) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "stars_count", :default => 0
+    t.string   "time_zone"
   end
 
   create_table "stars", :force => true do |t|

@@ -1,16 +1,17 @@
 # == Schema Information
-# Schema version: 20110327100359
+# Schema version: 20110328000448
 #
 # Table name: events
 #
 #  id          :integer(4)      not null, primary key
 #  name        :string(255)     not null
-#  starts_at   :date            not null
-#  ends_at     :date
+#  starts_at   :datetime        not null
+#  ends_at     :datetime
 #  homepage    :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
 #  stars_count :integer(4)      default(0)
+#  time_zone   :string(255)
 #
 
 class Event < ActiveRecord::Base
@@ -22,6 +23,26 @@ class Event < ActiveRecord::Base
   has_many :stars, :dependent => :destroy
 
   scope :current, where("ends_at is NULL OR ends_at >= ?", Date.today).order('starts_at ASC')
+
+  def zone
+    ActiveSupport::TimeZone.new(time_zone)
+  end
+
+  def starts_in_zone
+    unless starts_at
+      return nil
+    else
+      starts_at.in_time_zone(zone)
+    end
+  end
+
+  def ends_in_zone
+    unless ends_at
+      return nil
+    else
+      ends_at.in_time_zone(zone)
+    end
+  end
 
   def upcoming?
     starts_at && (starts_at > Date.today)
