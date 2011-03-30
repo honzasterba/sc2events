@@ -21,4 +21,31 @@ module EventsHelper
 		
 		return s.html_safe
 	end
+	
+	def render_date time
+		return time.day.to_s + " " + time.strftime('%B')
+	end
+	
+	def render_time time
+		return time.hour.to_s + ":" + time.strftime('%M')
+	end
+	
+	# As there seems to be problem with rendering %B %e with strftime, I made this
+	# helper to use for rendering event dates
+	def render_time_span event
+		# return time.strftime("%c")
+		s = render_date( event.starts_at ) + ' ' + render_time( event.starts_at );
+		s << ' <span class="slash">/</span> '
+		if event.ends_at
+			if event.starts_at.month == event.ends_at.month and event.starts_at.year == event.ends_at.year
+				s << render_time( event.ends_at )
+			else
+				s << render_date( event.ends_at ) + ' ' + render_time( event.ends_at )
+			end
+		else
+			s << "N/A"
+		end
+		
+		return s.html_safe;
+	end
 end

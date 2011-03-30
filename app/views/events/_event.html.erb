@@ -19,15 +19,13 @@
       star_class = ""
     end
 	
+	
 %>
 
 <a class="box event <%= class_state %> <%= objid %> <%= star_class %>" href="<%= event.homepage.blank? ? '#' : event.homepage; %>" target="_blank">
 	<div class="row">
-		<p class="date">
-			<%= event.starts_at.strftime('%e %B') %>
-			<span class="slash">/</span>
-			<%= event.ends_at.nil? ? 'n/a' : event.ends_at.strftime('%e %B') %>
-		</p>
+		<p class="date"><%= render_time_span( event ) %></p>
+		
 		<h3 class="title"><%= event.name %></h3>
 		<p><span class="star <%= starred && current_user.starred_event?(event) ? 'on' : 'off' %> <%= objid %>"><span>Star</span></span></p>
 		
