@@ -1,4 +1,8 @@
 require 'openid/store/filesystem'
+require 'omniauth/strategies/facebook'
+require 'omniauth/strategies/twitter'
+require 'omniauth/strategies/open_id'
+require 'omniauth/strategies/google_apps'
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :twitter, 'iGs1H4w3EILBoD5X0gcw', 'hP88WIo8cfg9kzF68J2qahLrlwYMl9USlrAtuCK2Gg'
