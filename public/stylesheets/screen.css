@@ -50,7 +50,7 @@
 		{
 			display: block;
 			background: url("/images/logo.png") no-repeat left bottom;
-			width: 256px;
+			width: 336px;
 			height: 80px;
 			position: absolute;
 			left: 0px;
@@ -182,10 +182,15 @@
 				font-weight: bold;
 				color: #333;
 			}
-	
 	/* --------------------------------------------------------------------------
 		Main
 	*/
+	
+	#main
+	{
+		overflow: auto;
+		margin-bottom: 32px;
+	}
 	
 	#sidebar
 	{
@@ -473,7 +478,7 @@
 	{
 		font-size: 16px;
 		color: #666;
-		padding: 8px 0px;
+		padding: 8px 16px 8px 0px;
 		line-height: 24px;
 	}
 	
@@ -484,6 +489,15 @@
         -moz-opacity:0.0;
         -khtml-opacity: 0.0;
         opacity: 0.0
+	}
+	
+	#sidebar .footer
+	{
+		border-top: 2px solid #eee;
+		color: #666;
+		padding-top: 16px;
+		margin-top: 64px;
+		line-height: 160%;
 	}
 
 	/* --------------------------------------------------------------------------
